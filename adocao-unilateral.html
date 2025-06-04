@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário - Adoção Unilateral</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #e8f5e8 0%, #f0f8f0 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2d5a27 0%, #4a7c59 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            opacity: 0.9;
+            font-size: 16px;
+        }
+
+        .form-container {
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            background: linear-gradient(135deg, #6a994e 0%, #7fb069 100%);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 15px rgba(106, 153, 78, 0.3);
+        }
+
+        .doc-list {
+            display: grid;
+            gap: 12px;
+        }
+
+        .doc-item {
+            display: flex;
+            align-items: flex-start;
+            padding: 15px;
+            background: #f8fcf8;
+            border-left: 4px solid #7fb069;
+            border-radius: 8px;
+            line-height: 1.5;
+        }
+
+        .doc-number {
+            font-weight: 600;
+            color: #6a994e;
+            margin-right: 10px;
+            min-width: 30px;
+        }
+
+        .doc-text {
+            color: #2d4a27;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #2d4a27;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e1f0e1;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+            background: white;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #7fb069;
+            box-shadow: 0 0 0 3px rgba(127, 176, 105, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .required {
+            color: #c44536;
+        }
+
+        .submit-section {
+            background: #f8fcf8;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .btn-submit {
+            background: linear-gradient(135deg, #6a994e 0%, #7fb069 100%);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(106, 153, 78, 0.3);
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(106, 153, 78, 0.4);
+        }
+
+        .btn-submit:active {
+            transform: translateY(0);
+        }
+
+        .output-section {
+            display: none;
+            background: #f0f8f0;
+            border: 2px solid #7fb069;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .output-section h3 {
+            color: #2d4a27;
+            margin-bottom: 15px;
+        }
+
+        .output-content {
+            background: white;
+            padding: 15px;
+            border-radius: 5px;
+            white-space: pre-line;
+            font-family: monospace;
+            font-size: 14px;
+            border: 1px solid #d4e6d4;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .btn-copy, .btn-whatsapp, .btn-pdf {
+            background: linear-gradient(135deg, #6a994e 0%, #7fb069 100%);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(106, 153, 78, 0.3);
+        }
+
+        .btn-whatsapp {
+            background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+        }
+
+        .btn-pdf {
+            background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+        }
+
+        .btn-copy:hover, .btn-whatsapp:hover, .btn-pdf:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(106, 153, 78, 0.4);
+        }
+
+        .btn-copy:active, .btn-whatsapp:active, .btn-pdf:active {
+            transform: translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-container {
+                padding: 20px;
+            }
+            
+            .header {
+                padding: 20px;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Adoção Unilateral</h1>
+            <p>Formulário para processo de adoção unilateral</p>
+        </div>
+
+        <div class="form-container">
+            <form id="adocaoForm">
+                <!-- Seção de Dados Pessoais -->
+                <div class="section">
+                    <div class="section-title">👤 Dados Pessoais do Requerente</div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="nomeCompleto">Nome completo <span class="required">*</span></label>
+                            <input type="text" id="nomeCompleto" name="nomeCompleto" required placeholder="Digite seu nome completo">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="cpf">CPF <span class="required">*</span></label>
+                            <input type="text" id="cpf" name="cpf" required placeholder="000.000.000-00" maxlength="14">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Seção de Documentos -->
+                <div class="section">
+                    <div class="section-title">📋 Documentos Necessários</div>
+                    <div class="doc-list">
+                        <div class="doc-item">
+                            <span class="doc-number">01)</span>
+                            <span class="doc-text">Documentos pessoais (RG e CPF) da parte requerente</span>
+                        </div>
+                        <div class="doc-item">
+                            <span class="doc-number">02)</span>
+                            <span class="doc-text">Comprovante de residência (conta de água/luz/telefone)</span>
+                        </div>
+                        <div class="doc-item">
+                            <span class="doc-number">03)</span>
+                            <span class="doc-text">Comprovante de renda (carteira de trabalho, contracheque, benefício previdenciário, declaração IRPF)</span>
+                        </div>
+                        <div class="doc-item">
+                            <span class="doc-number">04)</span>
+                            <span class="doc-text">Certidão de nascimento da criança/adolescente que pretende adotar</span>
+                        </div>
+                        <div class="doc-item">
+                            <span class="doc-number">05)</span>
+                            <span class="doc-text">Endereço residencial ou comercial da genitora (para citação, se não proposta em conjunto)</span>
+                        </div>
+                        <div class="doc-item">
+                            <span class="doc-number">06)</span>
+                            <span class="doc-text">Lista com nome e endereço de 03 testemunhas que saibam da relação de afeto entre adotante e criança/adolescente</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Seção de Informações sobre a Criança/Adolescente -->
+                <div class="section">
+                    <div class="section-title">👶 Informações sobre a Criança/Adolescente</div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="nomeCrianca">Nome completo da criança/adolescente <span class="required">*</span></label>
+                            <input type="text" id="nomeCrianca" name="nomeCrianca" required placeholder="Nome completo">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="idadeCrianca">Idade da criança/adolescente <span class="required">*</span></label>
+                            <input type="text" id="idadeCrianca" name="idadeCrianca" required placeholder="Ex: 8 anos">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="nomeGenitora">Nome da genitora</label>
+                        <input type="text" id="nomeGenitora" name="nomeGenitora" placeholder="Nome da mãe biológica">
+                    </div>
+                </div>
+
+                <!-- Seção de Esclarecimentos -->
+                <div class="section">
+                    <div class="section-title">📝 Esclarecimentos Necessários ao Ajuizamento da Ação</div>
+                    
+                    <div class="form-group">
+                        <label for="tempoConvivencia">01) Há quanto tempo convive com a criança/adolescente que pretende adotar? <span class="required">*</span></label>
+                        <input type="text" id="tempoConvivencia" name="tempoConvivencia" required placeholder="Ex: 5 anos, desde o nascimento">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="concordanciaGenitora">02) Há concordância da genitora da criança/adolescente com o registro? <span class="required">*</span></label>
+                        <select id="concordanciaGenitora" name="concordanciaGenitora" required>
+                            <option value="">Selecione</option>
+                            <option value="sim">Sim, há concordância</option>
+                            <option value="nao">Não há concordância</option>
+                            <option value="nao_localizada">Genitora não localizada</option>
+                            <option value="nao_se_aplica">Não se aplica</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="reconhecimentoPai">03) A criança/adolescente já o reconhece como pai/mãe? <span class="required">*</span></label>
+                        <select id="reconhecimentoPai" name="reconhecimentoPai" required>
+                            <option value="">Selecione</option>
+                            <option value="sim">Sim, me reconhece como pai/mãe</option>
+                            <option value="nao">Não me reconhece como pai/mãe</option>
+                            <option value="parcialmente">Reconhece parcialmente</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Seção de Informações Complementares -->
+                <div class="section">
+                    <div class="section-title">📄 Informações Complementares</div>
+                    
+                    <div class="form-group">
+                        <label for="motivoAdocao">Descreva os motivos que levam ao pedido de adoção</label>
+                        <textarea id="motivoAdocao" name="motivoAdocao" placeholder="Explique os motivos, o vínculo afetivo, a situação familiar, etc."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="situacaoFamiliar">Descreva a situação familiar atual</label>
+                        <textarea id="situacaoFamiliar" name="situacaoFamiliar" placeholder="Como está constituída a família, quem mora na casa, relacionamento com a criança, etc."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="testemunhas">Dados das 03 testemunhas</label>
+                        
+                        <!-- Testemunha 1 -->
+                        <div style="background: #f8fcf8; padding: 15px; border-radius: 8px; margin-bottom: 15px; border-left: 4px solid #7fb069;">
+                            <h4 style="color: #6a994e; margin-bottom: 10px;">Testemunha 01</h4>
+                            <div class="form-row">
+                                <div class="form-group" style="margin-bottom: 10px;">
+                                    <label for="teste1Nome" style="font-size: 14px;">Nome completo:</label>
+                                    <input type="text" id="teste1Nome" name="teste1Nome" placeholder="Nome completo da testemunha">
+                                </div>
+                                <div class="form-group" style="margin-bottom: 10px;">
+                                    <label for="teste1Telefone" style="font-size: 14px;">Telefone:</label>
+                                    <input type="text" id="teste1Telefone" name="teste1Telefone" placeholder="(00) 00000-0000" maxlength="15">
+                                </div>
+                            </div>
+                            <div class="form-group" style="margin-bottom: 0;">
+                                <label for="teste1Endereco" style="font-size: 14px;">Endereço completo:</label>
+                                <input type="text" id="teste1Endereco" name="teste1Endereco" placeholder="Rua, número, bairro, cidade - CEP">
+                            </div>
+                        </div>
+
+                        <!-- Testemunha 2 -->
+                        <div style="background: #f8fcf8; padding: 15px; border-radius: 8px; margin-bottom: 15px; border-left: 4px solid #7fb069;">
+                            <h4 style="color: #6a994e; margin-bottom: 10px;">Testemunha 02</h4>
+                            <div class="form-row">
+                                <div class="form-group" style="margin-bottom: 10px;">
+                                    <label for="teste2Nome" style="font-size: 14px;">Nome completo:</label>
+                                    <input type="text" id="teste2Nome" name="teste2Nome" placeholder="Nome completo da testemunha">
+                                </div>
+                                <div class="form-group" style="margin-bottom: 10px;">
+                                    <label for="teste2Telefone" style="font-size: 14px;">Telefone:</label>
+                                    <input type="text" id="teste2Telefone" name="teste2Telefone" placeholder="(00) 00000-0000" maxlength="15">
+                                </div>
+                            </div>
+                            <div class="form-group" style="margin-bottom: 0;">
+                                <label for="teste2Endereco" style="font-size: 14px;">Endereço completo:</label>
+                                <input type="text" id="teste2Endereco" name="teste2Endereco" placeholder="Rua, número, bairro, cidade - CEP">
+                            </div>
+                        </div>
+
+                        <!-- Testemunha 3 -->
+                        <div style="background: #f8fcf8; padding: 15px; border-radius: 8px; border-left: 4px solid #7fb069;">
+                            <h4 style="color: #6a994e; margin-bottom: 10px;">Testemunha 03</h4>
+                            <div class="form-row">
+                                <div class="form-group" style="margin-bottom: 10px;">
+                                    <label for="teste3Nome" style="font-size: 14px;">Nome completo:</label>
+                                    <input type="text" id="teste3Nome" name="teste3Nome" placeholder="Nome completo da testemunha">
+                                </div>
+                                <div class="form-group" style="margin-bottom: 10px;">
+                                    <label for="teste3Telefone" style="font-size: 14px;">Telefone:</label>
+                                    <input type="text" id="teste3Telefone" name="teste3Telefone" placeholder="(00) 00000-0000" maxlength="15">
+                                </div>
+                            </div>
+                            <div class="form-group" style="margin-bottom: 0;">
+                                <label for="teste3Endereco" style="font-size: 14px;">Endereço completo:</label>
+                                <input type="text" id="teste3Endereco" name="teste3Endereco" placeholder="Rua, número, bairro, cidade - CEP">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="submit-section">
+                    <button type="submit" class="btn-submit">📝 Gerar Formulário</button>
+                    <div id="outputSection" class="output-section">
+                        <h3>Formulário Preenchido - Copie e Envie:</h3>
+                        <div id="outputContent" class="output-content"></div>
+                        <div class="action-buttons">
+                            <button type="button" id="copyBtn" class="btn-copy">📋 Copiar Texto</button>
+                            <button type="button" id="whatsappBtn" class="btn-whatsapp">📱 Enviar via WhatsApp</button>
+                            <button type="button" id="generatePdfBtn" class="btn-pdf">📄 Gerar PDF</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('adocaoForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            let output = 'FORMULÁRIO - ADOÇÃO UNILATERAL\n';
+            output += '='.repeat(60) + '\n\n';
+            
+            // Dados Pessoais
+            output += '👤 DADOS PESSOAIS DO REQUERENTE:\n';
+            const nomeCompleto = formData.get('nomeCompleto');
+            const cpf = formData.get('cpf');
+            if (nomeCompleto) output += `Nome: ${nomeCompleto}\n`;
+            if (cpf) output += `CPF: ${cpf}\n`;
+            output += '\n';
+            
+            // Informações da Criança
+            output += '👶 DADOS DA CRIANÇA/ADOLESCENTE:\n';
+            const nomeCrianca = formData.get('nomeCrianca');
+            const idadeCrianca = formData.get('idadeCrianca');
+            const nomeGenitora = formData.get('nomeGenitora');
+            if (nomeCrianca) output += `Nome da criança/adolescente: ${nomeCrianca}\n`;
+            if (idadeCrianca) output += `Idade: ${idadeCrianca}\n`;
+            if (nomeGenitora) output += `Nome da genitora: ${nomeGenitora}\n`;
+            output += '\n';
+            
+            // Documentos (apenas lista informativa)
+            output += '📋 DOCUMENTOS NECESSÁRIOS PARA ATENDIMENTO:\n';
+            output += '01) Documentos pessoais (RG e CPF) da parte requerente\n';
+            output += '02) Comprovante de residência (conta de água/luz/telefone)\n';
+            output += '03) Comprovante de renda\n';
+            output += '04) Certidão de nascimento da criança/adolescente\n';
+            output += '05) Endereço da genitora (para citação)\n';
+            output += '06) Lista com dados de 03 testemunhas\n';
+            output += '\n';
+            
+            // Dados das Testemunhas
+            output += '👥 DADOS DAS TESTEMUNHAS:\n';
+            
+            const testemunhas = [
+                { nome: formData.get('teste1Nome'), telefone: formData.get('teste1Telefone'), endereco: formData.get('teste1Endereco'), num: '01' },
+                { nome: formData.get('teste2Nome'), telefone: formData.get('teste2Telefone'), endereco: formData.get('teste2Endereco'), num: '02' },
+                { nome: formData.get('teste3Nome'), telefone: formData.get('teste3Telefone'), endereco: formData.get('teste3Endereco'), num: '03' }
+            ];
+            
+            testemunhas.forEach(t => {
+                if (t.nome || t.telefone || t.endereco) {
+                    output += `Testemunha ${t.num}:\n`;
+                    if (t.nome) output += `  Nome: ${t.nome}\n`;
+                    if (t.telefone) output += `  Telefone: ${t.telefone}\n`;
+                    if (t.endereco) output += `  Endereço: ${t.endereco}\n`;
+                    output += '\n';
+                }
+            });
+            
+            output += '📝 RESPOSTAS DO QUESTIONÁRIO:\n';
+            output += `-${''.repeat(40)}\n`;
+            
+            // Questionário
+            const questions = [
+                { key: 'tempoConvivencia', label: '01) Tempo de convivência com a criança/adolescente' },
+                { key: 'concordanciaGenitora', label: '02) Concordância da genitora' },
+                { key: 'reconhecimentoPai', label: '03) Reconhecimento como pai/mãe' },
+                { key: 'motivoAdocao', label: 'Motivos para a adoção' },
+                { key: 'situacaoFamiliar', label: 'Situação familiar atual' }
+            ];
+            
+            questions.forEach(q => {
+                const value = formData.get(q.key);
+                if (value && value.trim()) {
+                    output += `${q.label}: ${value}\n\n`;
+                }
+            });
+            
+            output += '='.repeat(60) + '\n';
+            output += `Data do preenchimento: ${new Date().toLocaleDateString('pt-BR')}\n`;
+            
+            document.getElementById('outputContent').textContent = output;
+            document.getElementById('outputSection').style.display = 'block';
+            
+            // Scroll para a seção de output
+            document.getElementById('outputSection').scrollIntoView({ 
+                behavior: 'smooth' 
+            });
+        });
+
+        // Função para copiar texto
+        document.getElementById('copyBtn').addEventListener('click', function() {
+            const content = document.getElementById('outputContent').textContent;
+            navigator.clipboard.writeText(content).then(function() {
+                const btn = document.getElementById('copyBtn');
+                const originalText = btn.textContent;
+                btn.textContent = '✅ Copiado!';
+                btn.style.background = 'linear-gradient(135deg, #28a745 0%, #20c997 100%)';
+                setTimeout(() => {
+                    btn.textContent = originalText;
+                    btn.style.background = 'linear-gradient(135deg, #6a994e 0%, #7fb069 100%)';
+                }, 2000);
+            });
+        });
+
+        // Função para enviar via WhatsApp
+        document.getElementById('whatsappBtn').addEventListener('click', function() {
+            const content = document.getElementById('outputContent').textContent;
+            const message = encodeURIComponent(content);
+            const whatsappUrl = `https://wa.me/?text=${message}`;
+            window.open(whatsappUrl, '_blank');
+        });
+
+        // Função para gerar PDF
+        document.getElementById('generatePdfBtn').addEventListener('click', function() {
+            const content = document.getElementById('outputContent').textContent;
+            
+            // Criar um elemento temporário para o PDF
+            const pdfContent = document.createElement('div');
+            pdfContent.style.cssText = `
+                font-family: Arial, sans-serif;
+                font-size: 12px;
+                line-height: 1.4;
+                white-space: pre-line;
+                padding: 40px;
+                background: white;
+                max-width: 210mm;
+                margin: 0 auto;
+            `;
+            pdfContent.textContent = content;
+            
+            // Adicionar ao body temporariamente
+            document.body.appendChild(pdfContent);
+            
+            // Configurar impressão
+            const originalContents = document.body.innerHTML;
+            document.body.innerHTML = pdfContent.outerHTML;
+            
+            // Imprimir (que abrirá dialog para salvar como PDF)
+            window.print();
+            
+            // Restaurar conteúdo original
+            document.body.innerHTML = originalContents;
+            
+            // Re-anexar event listeners
+            location.reload();
+        });
+
+        // Máscara para telefones
+        const telefones = ['teste1Telefone', 'teste2Telefone', 'teste3Telefone'];
+        telefones.forEach(id => {
+            document.getElementById(id).addEventListener('input', function(e) {
+                let value = e.target.value.replace(/\D/g, '');
+                value = value.replace(/(\d{2})(\d)/, '($1) $2');
+                value = value.replace(/(\d{5})(\d)/, '$1-$2');
+                e.target.value = value;
+            });
+        });
+
+        // Máscara para CPF
+        document.getElementById('cpf').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            value = value.replace(/(\d{3})(\d)/, '$1.$2');
+            value = value.replace(/(\d{3})(\d)/, '$1.$2');
+            value = value.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+            e.target.value = value;
+        });
+    </script>
+</body>
+</html>
