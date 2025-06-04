@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulário - Dissolução de União Estável</title>
+    <title>Formulário - Adoção Unilateral</title>
     <style>
         * {
             margin: 0;
@@ -165,35 +165,6 @@
             transform: translateY(0);
         }
 
-        .action-buttons {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            margin-top: 20px;
-        }
-
-        .btn-copy, .btn-whatsapp {
-            background: linear-gradient(135deg, #6a994e 0%, #7fb069 100%);
-            color: white;
-            border: none;
-            padding: 12px 25px;
-            font-size: 16px;
-            font-weight: 600;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(106, 153, 78, 0.3);
-        }
-
-        .btn-whatsapp {
-            background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
-        }
-
-        .btn-copy:hover, .btn-whatsapp:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(106, 153, 78, 0.4);
-        }
-
         .output-section {
             display: none;
             background: #f0f8f0;
@@ -220,6 +191,43 @@
             overflow-y: auto;
         }
 
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .btn-copy, .btn-whatsapp, .btn-pdf {
+            background: linear-gradient(135deg, #6a994e 0%, #7fb069 100%);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(106, 153, 78, 0.3);
+        }
+
+        .btn-whatsapp {
+            background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+        }
+
+        .btn-pdf {
+            background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+        }
+
+        .btn-copy:hover, .btn-whatsapp:hover, .btn-pdf:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(106, 153, 78, 0.4);
+        }
+
+        .btn-copy:active, .btn-whatsapp:active, .btn-pdf:active {
+            transform: translateY(0);
+        }
+
         @media (max-width: 768px) {
             .form-row {
                 grid-template-columns: 1fr;
@@ -232,65 +240,23 @@
             .header {
                 padding: 20px;
             }
+
+            .action-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <h1>Dissolução de União Estável Litigiosa</h1>
-            <p>Formulário para regulamentação de guarda, visitas, alimentos e partilha de bens</p>
+            <h1>Adoção Unilateral</h1>
+            <p>Formulário para processo de adoção unilateral</p>
         </div>
 
         <div class="form-container">
-            <form id="dissolucaoForm">
-                <!-- Seção de Documentos -->
-                <div class="section">
-                    <div class="section-title">📋 Documentos Necessários</div>
-                    <div class="doc-list">
-                        <div class="doc-item">
-                            <span class="doc-number">01)</span>
-                            <span class="doc-text">Documentos pessoais (RG e CPF) da parte requerente</span>
-                        </div>
-                        <div class="doc-item">
-                            <span class="doc-number">02)</span>
-                            <span class="doc-text">Comprovante de residência (conta de água/luz/telefone)</span>
-                        </div>
-                        <div class="doc-item">
-                            <span class="doc-number">03)</span>
-                            <span class="doc-text">Comprovante de renda de quem reside na casa (carteira de trabalho, contracheque, benefício previdenciário, declaração IRPF)</span>
-                        </div>
-                        <div class="doc-item">
-                            <span class="doc-number">04)</span>
-                            <span class="doc-text">Escritura Pública Declaratória de União Estável (se houver)</span>
-                        </div>
-                        <div class="doc-item">
-                            <span class="doc-number">05)</span>
-                            <span class="doc-text">Certidão de nascimento dos filhos menores</span>
-                        </div>
-                        <div class="doc-item">
-                            <span class="doc-number">06)</span>
-                            <span class="doc-text">Endereço residencial e comercial da parte ré</span>
-                        </div>
-                        <div class="doc-item">
-                            <span class="doc-number">07)</span>
-                            <span class="doc-text">Cartão bancário para depósito de pensão alimentícia (banco, agência e conta)</span>
-                        </div>
-                        <div class="doc-item">
-                            <span class="doc-number">08)</span>
-                            <span class="doc-text">Comprovantes das despesas dos filhos menores</span>
-                        </div>
-                        <div class="doc-item">
-                            <span class="doc-number">09)</span>
-                            <span class="doc-text">Comprovantes dos rendimentos da parte ré (se houver)</span>
-                        </div>
-                        <div class="doc-item">
-                            <span class="doc-number">10)</span>
-                            <span class="doc-text">Lista de bens para partilhar (imóveis com matrícula, veículos com prontuário DETRAN, bens móveis descritos)</span>
-                        </div>
-                    </div>
-                </div>
-
+            <form id="adocaoForm">
                 <!-- Seção de Dados Pessoais -->
                 <div class="section">
                     <div class="section-title">👤 Dados Pessoais do Requerente</div>
@@ -308,81 +274,163 @@
                     </div>
                 </div>
 
-                <!-- Seção de Questionário -->
+                <!-- Seção de Documentos -->
                 <div class="section">
-                    <div class="section-title">📝 Informações sobre a União e Separação</div>
-                    
-                    <div class="form-group">
-                        <label for="tempoConvivencia">A) Por quanto tempo conviveu a parte requerente com a parte ré? <span class="required">*</span></label>
-                        <input type="text" id="tempoConvivencia" name="tempoConvivencia" required placeholder="Ex: 5 anos, 2 anos e 6 meses">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="tempoSeparacao">B) Há quanto tempo estão separados? <span class="required">*</span></label>
-                        <input type="text" id="tempoSeparacao" name="tempoSeparacao" required placeholder="Ex: 1 ano, 6 meses">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="guardaFilhos">C) Desde a separação, quem está exercendo os cuidados dos filhos menores?</label>
-                        <input type="text" id="guardaFilhos" name="guardaFilhos" placeholder="Nome da pessoa que cuida dos filhos">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="alteracaoGuarda">D) Se não estiver exercendo a guarda de fato e desejar assumir os cuidados dos filhos, esclareça por que pretende a alteração da guarda. Há risco aos filhos na forma como se encontram?</label>
-                        <textarea id="alteracaoGuarda" name="alteracaoGuarda" placeholder="Descreva os motivos para alteração da guarda e eventuais riscos"></textarea>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="visitaRegulamentacao">E) Como deseja regulamentar o direito de visitas? Com que frequência será realizada?</label>
-                        <textarea id="visitaRegulamentacao" name="visitaRegulamentacao" placeholder="Ex: Finais de semana alternados, quartas-feiras das 14h às 18h, etc."></textarea>
+                    <div class="section-title">📋 Documentos Necessários</div>
+                    <div class="doc-list">
+                        <div class="doc-item">
+                            <span class="doc-number">01)</span>
+                            <span class="doc-text">Documentos pessoais (RG e CPF) da parte requerente</span>
+                        </div>
+                        <div class="doc-item">
+                            <span class="doc-number">02)</span>
+                            <span class="doc-text">Comprovante de residência (conta de água/luz/telefone)</span>
+                        </div>
+                        <div class="doc-item">
+                            <span class="doc-number">03)</span>
+                            <span class="doc-text">Comprovante de renda (carteira de trabalho, contracheque, benefício previdenciário, declaração IRPF)</span>
+                        </div>
+                        <div class="doc-item">
+                            <span class="doc-number">04)</span>
+                            <span class="doc-text">Certidão de nascimento da criança/adolescente que pretende adotar</span>
+                        </div>
+                        <div class="doc-item">
+                            <span class="doc-number">05)</span>
+                            <span class="doc-text">Endereço residencial ou comercial da genitora (para citação, se não proposta em conjunto)</span>
+                        </div>
+                        <div class="doc-item">
+                            <span class="doc-number">06)</span>
+                            <span class="doc-text">Lista com nome e endereço de 03 testemunhas que saibam da relação de afeto entre adotante e criança/adolescente</span>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Seção sobre Alimentos -->
+                <!-- Seção de Informações sobre a Criança/Adolescente -->
                 <div class="section">
-                    <div class="section-title">💰 Informações sobre Pensão Alimentícia</div>
+                    <div class="section-title">👶 Informações sobre a Criança/Adolescente</div>
                     
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="ajudaAtual">F) A parte ré, desde a separação, vem ajudando com algum valor de alimentos? Quanto?</label>
-                            <input type="text" id="ajudaAtual" name="ajudaAtual" placeholder="Ex: R$ 500,00 mensais, Não ajuda">
+                            <label for="nomeCrianca">Nome completo da criança/adolescente <span class="required">*</span></label>
+                            <input type="text" id="nomeCrianca" name="nomeCrianca" required placeholder="Nome completo">
                         </div>
 
                         <div class="form-group">
-                            <label for="rendaReu">G) Quanto a parte ré ganha por mês? Qual sua atividade profissional?</label>
-                            <input type="text" id="rendaReu" name="rendaReu" placeholder="Ex: R$ 2.500,00 - Vendedor">
-                        </div>
-                    </div>
-
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="outrosFilhos">H) A parte ré possui outros filhos menores?</label>
-                            <select id="outrosFilhos" name="outrosFilhos">
-                                <option value="">Selecione</option>
-                                <option value="não">Não</option>
-                                <option value="sim">Sim</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="valorDesejado">I) Que valor deseja receber a título de pensão alimentícia?</label>
-                            <input type="text" id="valorDesejado" name="valorDesejado" placeholder="Ex: R$ 800,00, 30% do salário">
+                            <label for="idadeCrianca">Idade da criança/adolescente <span class="required">*</span></label>
+                            <input type="text" id="idadeCrianca" name="idadeCrianca" required placeholder="Ex: 8 anos">
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label for="carteiraAssinada">J) A parte ré possui carteira assinada? Qual empregador? Deseja fazer desconto em folha?</label>
-                        <textarea id="carteiraAssinada" name="carteiraAssinada" placeholder="Informe se tem carteira assinada, nome do empregador e se deseja desconto em folha. Se sim, informe conta bancária."></textarea>
+                        <label for="nomeGenitora">Nome da genitora</label>
+                        <input type="text" id="nomeGenitora" name="nomeGenitora" placeholder="Nome da mãe biológica">
                     </div>
                 </div>
 
-                <!-- Seção sobre Partilha -->
+                <!-- Seção de Esclarecimentos -->
                 <div class="section">
-                    <div class="section-title">🏠 Partilha de Bens</div>
+                    <div class="section-title">📝 Esclarecimentos Necessários ao Ajuizamento da Ação</div>
                     
                     <div class="form-group">
-                        <label for="partilhaBens">K) Como deseja partilhar os bens?</label>
-                        <textarea id="partilhaBens" name="partilhaBens" placeholder="Descreva como deseja dividir os bens (imóveis, veículos, móveis, etc.)"></textarea>
+                        <label for="tempoConvivencia">01) Há quanto tempo convive com a criança/adolescente que pretende adotar? <span class="required">*</span></label>
+                        <input type="text" id="tempoConvivencia" name="tempoConvivencia" required placeholder="Ex: 5 anos, desde o nascimento">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="concordanciaGenitora">02) Há concordância da genitora da criança/adolescente com o registro? <span class="required">*</span></label>
+                        <select id="concordanciaGenitora" name="concordanciaGenitora" required>
+                            <option value="">Selecione</option>
+                            <option value="sim">Sim, há concordância</option>
+                            <option value="nao">Não há concordância</option>
+                            <option value="nao_localizada">Genitora não localizada</option>
+                            <option value="nao_se_aplica">Não se aplica</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="reconhecimentoPai">03) A criança/adolescente já o reconhece como pai/mãe? <span class="required">*</span></label>
+                        <select id="reconhecimentoPai" name="reconhecimentoPai" required>
+                            <option value="">Selecione</option>
+                            <option value="sim">Sim, me reconhece como pai/mãe</option>
+                            <option value="nao">Não me reconhece como pai/mãe</option>
+                            <option value="parcialmente">Reconhece parcialmente</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Seção de Informações Complementares -->
+                <div class="section">
+                    <div class="section-title">📄 Informações Complementares</div>
+                    
+                    <div class="form-group">
+                        <label for="motivoAdocao">Descreva os motivos que levam ao pedido de adoção</label>
+                        <textarea id="motivoAdocao" name="motivoAdocao" placeholder="Explique os motivos, o vínculo afetivo, a situação familiar, etc."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="situacaoFamiliar">Descreva a situação familiar atual</label>
+                        <textarea id="situacaoFamiliar" name="situacaoFamiliar" placeholder="Como está constituída a família, quem mora na casa, relacionamento com a criança, etc."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="testemunhas">Dados das 03 testemunhas</label>
+                        
+                        <!-- Testemunha 1 -->
+                        <div style="background: #f8fcf8; padding: 15px; border-radius: 8px; margin-bottom: 15px; border-left: 4px solid #7fb069;">
+                            <h4 style="color: #6a994e; margin-bottom: 10px;">Testemunha 01</h4>
+                            <div class="form-row">
+                                <div class="form-group" style="margin-bottom: 10px;">
+                                    <label for="teste1Nome" style="font-size: 14px;">Nome completo:</label>
+                                    <input type="text" id="teste1Nome" name="teste1Nome" placeholder="Nome completo da testemunha">
+                                </div>
+                                <div class="form-group" style="margin-bottom: 10px;">
+                                    <label for="teste1Telefone" style="font-size: 14px;">Telefone:</label>
+                                    <input type="text" id="teste1Telefone" name="teste1Telefone" placeholder="(00) 00000-0000" maxlength="15">
+                                </div>
+                            </div>
+                            <div class="form-group" style="margin-bottom: 0;">
+                                <label for="teste1Endereco" style="font-size: 14px;">Endereço completo:</label>
+                                <input type="text" id="teste1Endereco" name="teste1Endereco" placeholder="Rua, número, bairro, cidade - CEP">
+                            </div>
+                        </div>
+
+                        <!-- Testemunha 2 -->
+                        <div style="background: #f8fcf8; padding: 15px; border-radius: 8px; margin-bottom: 15px; border-left: 4px solid #7fb069;">
+                            <h4 style="color: #6a994e; margin-bottom: 10px;">Testemunha 02</h4>
+                            <div class="form-row">
+                                <div class="form-group" style="margin-bottom: 10px;">
+                                    <label for="teste2Nome" style="font-size: 14px;">Nome completo:</label>
+                                    <input type="text" id="teste2Nome" name="teste2Nome" placeholder="Nome completo da testemunha">
+                                </div>
+                                <div class="form-group" style="margin-bottom: 10px;">
+                                    <label for="teste2Telefone" style="font-size: 14px;">Telefone:</label>
+                                    <input type="text" id="teste2Telefone" name="teste2Telefone" placeholder="(00) 00000-0000" maxlength="15">
+                                </div>
+                            </div>
+                            <div class="form-group" style="margin-bottom: 0;">
+                                <label for="teste2Endereco" style="font-size: 14px;">Endereço completo:</label>
+                                <input type="text" id="teste2Endereco" name="teste2Endereco" placeholder="Rua, número, bairro, cidade - CEP">
+                            </div>
+                        </div>
+
+                        <!-- Testemunha 3 -->
+                        <div style="background: #f8fcf8; padding: 15px; border-radius: 8px; border-left: 4px solid #7fb069;">
+                            <h4 style="color: #6a994e; margin-bottom: 10px;">Testemunha 03</h4>
+                            <div class="form-row">
+                                <div class="form-group" style="margin-bottom: 10px;">
+                                    <label for="teste3Nome" style="font-size: 14px;">Nome completo:</label>
+                                    <input type="text" id="teste3Nome" name="teste3Nome" placeholder="Nome completo da testemunha">
+                                </div>
+                                <div class="form-group" style="margin-bottom: 10px;">
+                                    <label for="teste3Telefone" style="font-size: 14px;">Telefone:</label>
+                                    <input type="text" id="teste3Telefone" name="teste3Telefone" placeholder="(00) 00000-0000" maxlength="15">
+                                </div>
+                            </div>
+                            <div class="form-group" style="margin-bottom: 0;">
+                                <label for="teste3Endereco" style="font-size: 14px;">Endereço completo:</label>
+                                <input type="text" id="teste3Endereco" name="teste3Endereco" placeholder="Rua, número, bairro, cidade - CEP">
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -403,11 +451,11 @@
     </div>
 
     <script>
-        document.getElementById('dissolucaoForm').addEventListener('submit', function(e) {
+        document.getElementById('adocaoForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
             const formData = new FormData(this);
-            let output = 'FORMULÁRIO - DISSOLUÇÃO DE UNIÃO ESTÁVEL LITIGIOSA\n';
+            let output = 'FORMULÁRIO - ADOÇÃO UNILATERAL\n';
             output += '='.repeat(60) + '\n\n';
             
             // Dados Pessoais
@@ -416,36 +464,57 @@
             const cpf = formData.get('cpf');
             if (nomeCompleto) output += `Nome: ${nomeCompleto}\n`;
             if (cpf) output += `CPF: ${cpf}\n`;
-            output += '📝 RESPOSTAS DO QUESTIONÁRIO:\n';
-            output += `-${''.repeat(40)}\n`;
+            output += '\n';
+            
+            // Informações da Criança
+            output += '👶 DADOS DA CRIANÇA/ADOLESCENTE:\n';
+            const nomeCrianca = formData.get('nomeCrianca');
+            const idadeCrianca = formData.get('idadeCrianca');
+            const nomeGenitora = formData.get('nomeGenitora');
+            if (nomeCrianca) output += `Nome da criança/adolescente: ${nomeCrianca}\n`;
+            if (idadeCrianca) output += `Idade: ${idadeCrianca}\n`;
+            if (nomeGenitora) output += `Nome da genitora: ${nomeGenitora}\n`;
+            output += '\n';
             
             // Documentos (apenas lista informativa)
             output += '📋 DOCUMENTOS NECESSÁRIOS PARA ATENDIMENTO:\n';
             output += '01) Documentos pessoais (RG e CPF) da parte requerente\n';
             output += '02) Comprovante de residência (conta de água/luz/telefone)\n';
-            output += '03) Comprovante de renda de quem reside na casa\n';
-            output += '04) Escritura Pública Declaratória de União Estável (se houver)\n';
-            output += '05) Certidão de nascimento dos filhos menores\n';
-            output += '06) Endereço residencial e comercial da parte ré\n';
-            output += '07) Cartão bancário para depósito de pensão alimentícia\n';
-            output += '08) Comprovantes das despesas dos filhos menores\n';
-            output += '09) Comprovantes dos rendimentos da parte ré\n';
-            output += '10) Lista de bens para partilhar\n';
+            output += '03) Comprovante de renda\n';
+            output += '04) Certidão de nascimento da criança/adolescente\n';
+            output += '05) Endereço da genitora (para citação)\n';
+            output += '06) Lista com dados de 03 testemunhas\n';
             output += '\n';
+            
+            // Dados das Testemunhas
+            output += '👥 DADOS DAS TESTEMUNHAS:\n';
+            
+            const testemunhas = [
+                { nome: formData.get('teste1Nome'), telefone: formData.get('teste1Telefone'), endereco: formData.get('teste1Endereco'), num: '01' },
+                { nome: formData.get('teste2Nome'), telefone: formData.get('teste2Telefone'), endereco: formData.get('teste2Endereco'), num: '02' },
+                { nome: formData.get('teste3Nome'), telefone: formData.get('teste3Telefone'), endereco: formData.get('teste3Endereco'), num: '03' }
+            ];
+            
+            testemunhas.forEach(t => {
+                if (t.nome || t.telefone || t.endereco) {
+                    output += `Testemunha ${t.num}:\n`;
+                    if (t.nome) output += `  Nome: ${t.nome}\n`;
+                    if (t.telefone) output += `  Telefone: ${t.telefone}\n`;
+                    if (t.endereco) output += `  Endereço: ${t.endereco}\n`;
+                    output += '\n';
+                }
+            });
+            
+            output += '📝 RESPOSTAS DO QUESTIONÁRIO:\n';
+            output += `-${''.repeat(40)}\n`;
             
             // Questionário
             const questions = [
-                { key: 'tempoConvivencia', label: 'A) Tempo de convivência' },
-                { key: 'tempoSeparacao', label: 'B) Tempo de separação' },
-                { key: 'guardaFilhos', label: 'C) Quem cuida dos filhos' },
-                { key: 'alteracaoGuarda', label: 'D) Alteração de guarda' },
-                { key: 'visitaRegulamentacao', label: 'E) Regulamentação de visitas' },
-                { key: 'ajudaAtual', label: 'F) Ajuda atual com alimentos' },
-                { key: 'rendaReu', label: 'G) Renda da parte ré' },
-                { key: 'outrosFilhos', label: 'H) Outros filhos menores' },
-                { key: 'valorDesejado', label: 'I) Valor desejado de pensão' },
-                { key: 'carteiraAssinada', label: 'J) Carteira assinada/empregador' },
-                { key: 'partilhaBens', label: 'K) Partilha de bens' }
+                { key: 'tempoConvivencia', label: '01) Tempo de convivência com a criança/adolescente' },
+                { key: 'concordanciaGenitora', label: '02) Concordância da genitora' },
+                { key: 'reconhecimentoPai', label: '03) Reconhecimento como pai/mãe' },
+                { key: 'motivoAdocao', label: 'Motivos para a adoção' },
+                { key: 'situacaoFamiliar', label: 'Situação familiar atual' }
             ];
             
             questions.forEach(q => {
@@ -523,6 +592,17 @@
             
             // Re-anexar event listeners
             location.reload();
+        });
+
+        // Máscara para telefones
+        const telefones = ['teste1Telefone', 'teste2Telefone', 'teste3Telefone'];
+        telefones.forEach(id => {
+            document.getElementById(id).addEventListener('input', function(e) {
+                let value = e.target.value.replace(/\D/g, '');
+                value = value.replace(/(\d{2})(\d)/, '($1) $2');
+                value = value.replace(/(\d{5})(\d)/, '$1-$2');
+                e.target.value = value;
+            });
         });
 
         // Máscara para CPF
